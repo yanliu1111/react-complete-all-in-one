@@ -4,7 +4,7 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <header style={{ backgroundColor: 'royalblue', color: 'white', padding: '10px' }}>
+    <header className='header'>
       <h1>Groceries List</h1>
     </header>
   )
