@@ -1,8 +1,11 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+
 import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
 import SearchItems from './SearchItem';
+import TestPage from './TestPage';
 import { useState } from 'react';
 
 function App() {
@@ -37,26 +40,33 @@ function App() {
     setNewItem(''); // clear input field
   }
   return (
-    <div className="App">
-      <Header title='Grocery List' />
-      <AddItem 
-        newItem={newItem}
-        setNewItem={setNewItem}
-        handleSubmit={handleSubmit}
-      />
-      <SearchItems 
-        search={search}
-        setSearch={setSearch}
-      />
-      <Content 
-        items = {items.filter(item =>
-          item.item.toLowerCase().includes(search.toLowerCase())
-        )}
-        handleCheck = {handleCheck}
-        handleDelete = {handleDelete}
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="App">
+              <Header title="Grocery List" />
+              <AddItem
+                newItem={newItem}
+                setNewItem={setNewItem}
+                handleSubmit={handleSubmit}
+              />
+              <SearchItems search={search} setSearch={setSearch} />
+              <Content
+                items={items.filter((item) =>
+                  item.item.toLowerCase().includes(search.toLowerCase())
+                )}
+                handleCheck={handleCheck}
+                handleDelete={handleDelete}
+              />
+              <Footer length={items.length} />
+            </div>
+          }
         />
-      <Footer length={items.length}/>     
-    </div>
+        <Route path="/test" element={<TestPage />} />
+      </Routes>
+    </Router>
   );
 }
 
