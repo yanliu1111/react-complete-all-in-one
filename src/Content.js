@@ -17,9 +17,8 @@ const Content = ({items, handleCheck, handleDelete}) => {
   // const handleClick2 = (e) => {
   //   console.log(e.target.innerText);
   // }
-  return (
-    
-    <main>
+  return (    
+    <>
       {items.length ? ( 
         <ItemList
           items={items}
@@ -35,7 +34,7 @@ const Content = ({items, handleCheck, handleDelete}) => {
       <button onClick={handleClick}>Click it</button>
       <button onClick={handleNameChange}>Change name</button>
       <button onClick={(e)=>{handleClick2(e)}}>Click it</button> */}
-    </main>
+    </>
   )
 }
 

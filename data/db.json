@@ -3,22 +3,22 @@
     {
       "id": 1,
       "checked": false,
-      "description": "Almonds, Unsalted, in the blue bag"
+      "item": "Almonds, Unsalted, in the blue bag"
     },
     {
       "id": 2,
       "checked": false,
-      "description": "Pizza"
+      "item": "Pizza"
     },
     {
       "id": 3,
       "checked": false,
-      "description": "Bread"
+      "item": "Bread"
     },
     {
       "id": 4,
       "checked": false,
-      "description": "Ice cream"
+      "item": "Ice cream"
     }
   ]
 }
