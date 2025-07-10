@@ -33,6 +33,9 @@ React Full Course for Beginners:
   - http://localhost:3000/test
 - Chapter 11: useEffect Hook
 - Chapter 12: JSON Server
+  - `npx json-server -p 3500 -w data/db.json`
+  - localhost:3500/items
+
 - Chapter 13: Fetch API Data
 - Chapter 14: CRUD Operations
 - Chapter 15: Fetch Data Challenge
