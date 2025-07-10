@@ -29,6 +29,8 @@ React Full Course for Beginners:
 - Chapter 8: Props & Prop Drilling
 - Chapter 9: Controlled Component Inputs
 - Chapter 10: Project Challenge
+  - create route for the project challenge
+  - http://localhost:3000/test
 - Chapter 11: useEffect Hook
 - Chapter 12: JSON Server
 - Chapter 13: Fetch API Data
