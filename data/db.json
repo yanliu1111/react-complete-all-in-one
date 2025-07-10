@@ -2,23 +2,23 @@
   "items": [
     {
       "id": 1,
-      "checked": false,
+      "checked": true,
       "item": "Almonds, Unsalted, in the blue bag"
     },
     {
-      "id": 2,
-      "checked": false,
-      "item": "Pizza"
-    },
-    {
       "id": 3,
-      "checked": false,
+      "checked": true,
       "item": "Bread"
     },
     {
-      "id": 4,
+      "id": 7,
+      "checked": true,
+      "item": "Banana"
+    },
+    {
+      "id": 8,
       "checked": false,
-      "item": "Ice cream"
+      "item": "Orange"
     }
   ]
 }

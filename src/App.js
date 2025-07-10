@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Header from './Header';
 import SearchItems from './SearchItem';
 import TestPage from './TestPage';
+import apiRequest from './apiRequest';
 
 function App() {
   const API_URL = 'http://localhost:3500/items';
@@ -36,20 +37,57 @@ function App() {
   , []); // empty array means it runs once when the component mounts, it not recreates the effect on every render
   
   
-  const addItem = (item) => {
+  const addItem = async (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const newItem = { id, checked: false, item};
     const listItems = [...items, newItem];
     setItems(listItems);
-  };
-  const handleCheck = (id) => {
-    // ternary operator
-    const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
-    setItems(listItems);
+
+    const postOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newItem),
+    };
+  
+    const result = await apiRequest(API_URL, postOptions);
+    if (result) {
+      setFetchError(result); // if there is an error, set the fetchError state
+    } else {
+      setFetchError(null);
+    }
   }
+  const handleCheck = async (id) => {
+    const listItems = items.map((item) =>
+      item.id === id ? { ...item, checked: !item.checked } : item
+    );
+    setItems(listItems);
+  
+    const myItem = listItems.find((item) => item.id === id); // Find the updated item
+    const updateOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ checked: myItem.checked }), // Access `checked` directly
+    };
+    const reqUrl = `${API_URL}/${id}`;
+    const result = await apiRequest(reqUrl, updateOptions);
+    if (result) {
+      setFetchError(result); // if there is an error, set the fetchError state
+    } else {
+      setFetchError(null);
+    }
+  };
   const handleDelete = (id) => {
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
+    const deleteOptions = {
+      method: 'DELETE',
+    };
+    const reqUrl = `${API_URL}/${id}`;
+    const result = apiRequest(reqUrl, deleteOptions);
   }
   const handleSubmit = (e) => {
     e.preventDefault(); // stops page from reloading
