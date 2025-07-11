@@ -17,12 +17,11 @@ const App = () => {
       <Header />
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} />
         <Route path="/new-post" element={<NewPost />} />
-        <Route path="/post/:id" element={<PostPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<Missing />} />
-      </Routes>
+        <Route exact path="/post/:id" element={<PostPage />} />
+        <Route path="/about" element={<About />} /> */}
+      </Routes> 
       <Footer />
     </div>
   );
