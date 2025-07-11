@@ -1,16 +1,11 @@
-// _rafce by sinnp search
-
 import React from 'react'
 
-export const Header = ({title}) => {
+const Header = () => {
   return (
     <header className='header'>
-      <h1>{title}</h1>
+      <h1>Header</h1>
     </header>
   )
-}
-Header.defaultProps = {
-  title: 'Default Title'
 }
 
 export default Header
