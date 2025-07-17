@@ -71,11 +71,11 @@ const App = () => {
   }
   return (
     <div className="App">
-      <Header />
-      <Nav />
+      <Header title = 'React JS Blog'/>
+      <Nav search={search} setSearch={setSearch}/>
       <Routes>
-        <Route path="/" element={<Home posts={posts} setPosts={setPosts} />} />
-        <Route path="/new-post" 
+        <Route path="/" element={<Home posts={searchResults} />} />
+        <Route path="/post" 
                element={<NewPost handleSubmit={handleSubmit} 
                                  postTitle={postTitle}
                                  setPostBody={setPostBody}
