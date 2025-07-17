@@ -39,16 +39,18 @@ const App = () => {
     }
   ]);
   const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState(posts);
   return (
-    <div className='App'>
-      <Header title = 'React JS Blog' />
+    <div className="App">
+      <Header />
       <Nav />
       <Routes>
-        {/* <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home posts={posts} setPosts={setPosts} />} />
         <Route path="/new-post" element={<NewPost />} />
-        <Route exact path="/post/:id" element={<PostPage />} />
-        <Route path="/about" element={<About />} /> */}
-      </Routes> 
+        <Route path="/post/:id" element={<PostPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<Missing />} />
+      </Routes>
       <Footer />
     </div>
   );
