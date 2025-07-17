@@ -1,9 +1,32 @@
 import React from 'react'
 
-const NewPost = () => {
+const NewPost = (
+  { setPostTitle, setPostBody, handleSubmit, postTitle, postBody }
+) => {
   return (
-    <main className='newPost'>
-      <h1>NewPost</h1>
+    <main className='NewPost'>
+      <h2>New Post</h2>
+      <form className='newPostForm' onSubmit={handleSubmit}>
+        <lable className= 'postTitle'>
+          Title:
+        </lable>
+        <input 
+          type='text' 
+          required 
+          value={postTitle} 
+          onChange={(e) => setPostTitle(e.target.value)}
+          placeholder='Post Title'
+        />
+        <label htmlFor="postBody">Post:</label>
+        <textarea 
+          id='postBody' 
+          required 
+          value={postBody} 
+          onChange={(e) => setPostBody(e.target.value)}
+          placeholder='Post Body'
+        />
+        <button type='submit'>Submit</button>
+      </form>
     </main>
   )
 }
