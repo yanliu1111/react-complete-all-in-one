@@ -5,11 +5,10 @@ const NewPost = (
 ) => {
   return (
     <main className='NewPost'>
-      <h2>New Post</h2>
-      <form className='newPostForm' onSubmit={handleSubmit}>
-        <lable className= 'postTitle'>
-          Title:
-        </lable>
+      
+        <h2>New Post</h2>
+        <form className='newPostForm' onSubmit={handleSubmit}>
+            <label htmlFor="postTitle">Title:</label>
         <input 
           type='text' 
           required 
