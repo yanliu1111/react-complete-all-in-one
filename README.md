@@ -47,3 +47,8 @@ React Full Course for Beginners:
 - Chapter 21: Context API & useContext Hook
 - Chapter 22: Easy Peasy Redux
 - Chapter 23: Build & Deploy Your React Apps
+
+👩‍💻hooks notes:
+- Dont call hooks inside loops, conditions, or nested functions.
+- Always call hooks at the top level of your React functions
+- Call hooks from React function components or custom hooks
