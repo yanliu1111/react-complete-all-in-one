@@ -1,10 +1,10 @@
 import { Link, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 
-import DataContex from './context/DataContext'
+import DataContext from './context/DataContext'
 
 const EditPost = () => {
-  const { posts, handleEdit, editBody, setEditBody, editTitle, setEditTitle } = useContext(DataContex)
+  const { posts, handleEdit, editBody, setEditBody, editTitle, setEditTitle } = useContext(DataContext)
   const { id } = useParams()
   const post = posts.find(post => (post.id).toString() === id)
   const [isLoading, setIsLoading] = useState(true)

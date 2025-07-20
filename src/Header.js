@@ -1,10 +1,10 @@
 import { FaLaptop, FaMobileAlt, FaTabletAlt } from 'react-icons/fa'
 
-import DataContex from './context/DataContext'
+import DataContext from './context/DataContext'
 import { useContext } from 'react'
 
 const Header = ({title}) => {
-  const { width } = useContext(DataContex)
+  const { width } = useContext(DataContext)
   return (
     <header className='Header'>
         <h1>{title}</h1>

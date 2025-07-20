@@ -89,3 +89,5 @@ export const DataProvider = ({ children }) => {
   );
 }
 
+export default DataContext;
+
