@@ -1,12 +1,25 @@
 import { Link, useParams } from 'react-router-dom'
 
 import DataContext from './context/DataContext'
+import api from './api/posts'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const PostPage = () => {
-    const { posts, handleDelete } = useContext(DataContext);
+    const { posts, setPosts } = useContext(DataContext);
     const { id } = useParams();
+    const navigate = useNavigate();
     const post = posts.find(post => (post.id).toString() === id);
+    const handleDelete = async (id) => {
+        try{
+          await api.delete(`/post/${id}`);
+          const postList = posts.filter(post => post.id !== id);
+          setPosts(postList);
+          navigate('/');
+        } catch (error) {
+          console.error('Failed to create new post:', error);
+        }
+      }
   return (
     <main className='PostPage'>
         <article className='post'>

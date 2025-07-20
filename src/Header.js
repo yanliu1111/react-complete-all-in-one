@@ -1,10 +1,10 @@
 import { FaLaptop, FaMobileAlt, FaTabletAlt } from 'react-icons/fa'
 
-import DataContext from './context/DataContext'
-import { useContext } from 'react'
+import useWindowSize from './hooks/useWindowSize'
 
 const Header = ({title}) => {
-  const { width } = useContext(DataContext)
+  const { width } = useWindowSize()
+  // useWindowSize is a custom hook that returns the current window size
   return (
     <header className='Header'>
         <h1>{title}</h1>
