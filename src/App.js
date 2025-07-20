@@ -1,7 +1,8 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import About from './About';
+import { DataProvider } from './context/DataContext';
 import EditPost from './EditPost';
 import Footer from './Footer';
 import Header from './Header';
@@ -10,10 +11,6 @@ import Missing from './Missing';
 import Nav from './Nav';
 import NewPost from './NewPost';
 import PostPage from './PostPage';
-import React from 'react';
-import api from './api/posts';
-import useAxiosFetch from './hooks/useAxiosFetch';
-import useWindowSize from './hooks/useWindowSize';
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -88,29 +85,21 @@ const App = () => {
   }
   return (
     <div className="App">
-      <Header title = 'React JS Blog' width={width} />
-      <Nav search={search} setSearch={setSearch}/>
-      <Routes>
-        <Route path="/" element={<Home posts={searchResults} fetchError={error} isLoading={isLoading} />} />
-        <Route path="/post" 
-               element={<NewPost handleSubmit={handleSubmit} 
-                                 postTitle={postTitle}
-                                 setPostBody={setPostBody}
-                                 setPostTitle={setPostTitle}
-                                 postBody={postBody}/>} />
-        <Route path="/edit/:id" 
-               element={<EditPost posts={posts}
-								 handleEdit={handleEdit} 
-                                 editTitle={editTitle}
-								 setEditTitle={setEditTitle}
-								 editBody={editBody}
-								 setEditBody={setEditBody}
-								/>} />
-		<Route path="/post/:id" element={<PostPage posts={posts} handleDelete={handleDelete} />} />       
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<Missing />} />
-      </Routes>
-      <Footer />
+		<DataProvider>
+			<Header title = 'React JS Blog' />
+			<Nav/>
+			<Routes>
+				<Route path="/" element={<Home/>} />
+				<Route path="/post" 
+					element={<NewPost />} />
+				<Route path="/edit/:id" 
+					element={<EditPost />} />
+				<Route path="/post/:id" element={<PostPage />} />       
+				<Route path="/about" element={<About />} />
+				<Route path="*" element={<Missing />} />
+			</Routes>
+			<Footer />
+	   	</DataProvider>
     </div>
   );
 };

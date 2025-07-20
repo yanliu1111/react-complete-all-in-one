@@ -1,8 +1,10 @@
 import { Link, useParams } from 'react-router-dom'
 
-import React from 'react'
+import DataContex from './context/DataContext'
+import { useContext } from 'react'
 
-const PostPage = ({ posts, handleDelete }) => {
+const PostPage = () => {
+    const { posts, handleDelete } = useContext(DataContex);
     const { id } = useParams();
     const post = posts.find(post => (post.id).toString() === id);
   return (
