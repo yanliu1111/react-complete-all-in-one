@@ -24,9 +24,10 @@ const useAxiosFetch = (dataUrl) => {
           setData([]);
         }
       } finally {
-        isMounted && setTimeout(() => {
-          setIsLoading(false);
-        }, 1000); // Simulate loading delay
+        isMounted && setIsLoading(false);
+        // setTimeout(() => {
+        //   setIsLoading(false);
+        // }, 2000); // Simulate loading delay
       }
     };
 
