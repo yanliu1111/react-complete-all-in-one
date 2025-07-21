@@ -1,10 +1,23 @@
-import DataContext from './context/DataContext'
+import { useStoreActions, useStoreState } from 'easy-peasy'
+
 import { Link } from 'react-router-dom'
-import React from 'react'
-import { useContext } from 'react'
+import { useEffect } from 'react'
 
 const Nav = () => {
-  const { search, setSearch } = useContext(DataContext)
+  const posts = useStoreState((state) => state.posts);
+  const search = useStoreState((state) => state.search);
+  const setSearch = useStoreActions((actions) => actions.setSearch);
+  const setSearchResults = useStoreActions((actions) => actions.setSearchResults);
+
+  useEffect(() => {
+    console.log(posts); // Check if posts is undefined or empty
+    const filteredResults = (posts || []).filter(post =>
+      (post?.body?.toLowerCase().includes(search.toLowerCase()) ||
+      post?.title?.toLowerCase().includes(search.toLowerCase()))
+    );
+    setSearchResults(filteredResults.reverse());
+  }, [posts, search, setSearchResults]);
+  
   return (
     <nav className='Nav'>
         <form className='searchForm' onSubmit={(e) => e.preventDefault()}>

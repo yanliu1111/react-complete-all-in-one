@@ -1,24 +1,18 @@
 import { Link, useParams } from 'react-router-dom'
+import { useStoreActions, useStoreState } from 'easy-peasy';
 
-import DataContext from './context/DataContext'
 import api from './api/posts'
-import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const PostPage = () => {
-    const { posts, setPosts } = useContext(DataContext);
     const { id } = useParams();
+    const deletePost = useStoreActions((actions) => actions.deletePost);
+    const getPostsById = useStoreState((state) => state.getPostsById);
+    const post = getPostsById(id);
     const navigate = useNavigate();
-    const post = posts.find(post => (post.id).toString() === id);
-    const handleDelete = async (id) => {
-        try{
-          await api.delete(`/post/${id}`);
-          const postList = posts.filter(post => post.id !== id);
-          setPosts(postList);
-          navigate('/');
-        } catch (error) {
-          console.error('Failed to create new post:', error);
-        }
+    const handleDelete =  (id) => {
+        deletePost(id);
+        navigate('/');
       }
   return (
     <main className='PostPage'>
